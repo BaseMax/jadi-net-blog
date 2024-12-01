@@ -1,5 +1,5 @@
 venv
 venv/*
-*.html
-posts/
-posts/*.html
+#*.html
+#posts/
+#posts/*.html
