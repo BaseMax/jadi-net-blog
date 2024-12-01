@@ -1,0 +1,40 @@
+name: Update Jadi Blog Posts
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  update_posts:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install -r requirements.txt
+
+      - name: Run the Python script to fetch posts
+        run: |
+          source venv/bin/activate
+          python extract_posts.py
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "Max Base (GitHub Actions)"
+          git config --global user.email "maxbasecode@gmail.com"
+          git add .
+          git commit -m "Update posts and index.html"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
