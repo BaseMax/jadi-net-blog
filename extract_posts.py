@@ -23,7 +23,7 @@ for entry in feed.entries:
     content = entry.content[0].value if 'content' in entry else description
 
     html_content = f"""
-    <html>
+    <html lang="fa-IR" dir="rtl">
         <head><title>{title}</title></head>
         <body>
             <h1>{title}</h1>
@@ -43,7 +43,7 @@ for entry in feed.entries:
 post_links.sort(key=lambda x: os.path.getctime(x[1]), reverse=True)
 
 index_html_content = """
-<html>
+<html lang="fa-IR" dir="rtl">
     <head><title>Jadi Clone Blog</title></head>
     <body>
         <h1>Jadi Clone Blog</h1>
