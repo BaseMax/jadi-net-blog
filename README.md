@@ -10,6 +10,12 @@ To use the script, you need to install the following dependencies:
 pip install -r requirements.txt
 ```
 
+## Why This Project?
+
+The website **jadi.net** has been blocked within Iran's internet network, making it difficult for users in Iran to access the site. To view the blog, one must use a VPN to bypass the restrictions. To address this issue, I created this GitHub repository to automatically fetch and extract the blog posts from **jadi.net** and save them in this repository.
+
+This repository serves as a **clone blog** of **jadi.net**, where all blog posts are saved in a filter-less, easily accessible manner. You can now access the content directly on GitHub, which is not blocked by the Iranian government.
+
 ## How to Use
 
 1. Clone this repository:
