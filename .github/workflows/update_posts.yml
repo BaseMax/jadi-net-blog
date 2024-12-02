@@ -24,8 +24,6 @@ jobs:
           git config --global user.email "maxbasecode+githubactions@gmail.com"
           git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/BaseMax/jadi-net-blog.git
           git pull origin main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
       - name: Install dependencies
         run: |
@@ -40,5 +38,3 @@ jobs:
           git add .
           git commit -m "Automated commit"
           git push origin main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
