@@ -24,6 +24,9 @@ jobs:
           git config --global user.email "maxbasecode@gmail.com"
           git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/BaseMax/jadi-net-blog.git
           git pull origin main
+          git fetch origin main
+          git rebase origin/main
+          git pull origin main
 
       - name: Install dependencies
         run: |
