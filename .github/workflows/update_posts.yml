@@ -31,10 +31,11 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          git config --global user.name "Max Base (GitHub Actions)"
+          git config user.name "github-actions[bot]"
           git config --global user.email "maxbasecode@gmail.com"
+          git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/BaseMax/jadi-net-blog.git
           git add .
-          git commit -m "Update posts and index.html"
-          git push
+          git commit -m "Automated commit"
+          git push origin main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
