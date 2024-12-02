@@ -20,13 +20,11 @@ jobs:
 
       - name: Install dependencies
         run: |
-          python -m venv venv
-          source venv/bin/activate
+          git pull
           pip install -r requirements.txt
 
       - name: Run the Python script to fetch posts
         run: |
-          source venv/bin/activate
           python extract_posts.py
 
       - name: Commit and push changes
