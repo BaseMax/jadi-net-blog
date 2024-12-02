@@ -20,8 +20,8 @@ jobs:
 
       - name: Update from repository
         run: |
-          git config user.name "github-actions[bot]"
-          git config --global user.email "maxbasecode@gmail.com"
+          git config user.name "Max Base (Actions)"
+          git config --global user.email "maxbasecode+githubactions@gmail.com"
           git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/BaseMax/jadi-net-blog.git
           git pull origin main
 
