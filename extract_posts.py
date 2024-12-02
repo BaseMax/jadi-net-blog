@@ -3,9 +3,9 @@ import requests
 import feedparser
 from datetime import datetime
 
-RSS_URL = 'https://jadi.net/feed/'
 POSTS_DIR = 'posts'
 INDEX_FILE = 'index.html'
+RSS_URL = 'https://jadi.net/feed/'
 
 if not os.path.exists(POSTS_DIR):
     os.makedirs(POSTS_DIR)
@@ -22,16 +22,19 @@ for entry in feed.entries:
     description = entry.summary
     content = entry.content[0].value if 'content' in entry else description
 
-    html_content = f"""
-    <html lang="fa-IR" dir="rtl">
-        <head><title>{title}</title></head>
-        <body>
-            <h1>{title}</h1>
-            <p><strong>Published on:</strong> {published}</p>
-            <div>{content}</div>
-            <p><a href="{link}">Read more</a></p>
-        </body>
-    </html>
+    html_content = f"""<!doctype HTML>
+<html lang="fa-IR" dir="rtl">
+<head>
+    <title>{title}</title>
+    <meta charset="utf-8">
+</head>
+<body>
+    <h1>{title}</h1>
+    <p><strong>Published on:</strong> {published}</p>
+    <div>{content}</div>
+    <p><a href="{link}">Read more</a></p>
+</body>
+</html>
     """
     
     filename = f"{POSTS_DIR}/post_{datetime.now().strftime('%Y%m%d%H%M%S')}_{title.replace(' ', '_')}.html"
@@ -42,21 +45,24 @@ for entry in feed.entries:
 
 post_links.sort(key=lambda x: os.path.getctime(x[1]), reverse=True)
 
-index_html_content = """
+index_html_content = """<!doctype HTML>
 <html lang="fa-IR" dir="rtl">
-    <head><title>Jadi Clone Blog</title></head>
-    <body>
-        <h1>Jadi Clone Blog</h1>
-        <h2>Recent Posts</h2>
-        <ul>
+<head>
+    <title>وبلاگ جادی - Jadi Clone Blog</title>
+    <meta charset="utf-8">
+</head>
+<body>
+    <h1>وبلاگ جادی Jadi</h1>
+    <h2>مطالب اخیر</h2>
+    <ul>
 """
 
 for title, filename in post_links:
-    index_html_content += f'<li><a href="{filename}">{title}</a></li>\n'
+    index_html_content += f'<li><a href="{filename}">{title}</a></li>'
 
 index_html_content += """
         </ul>
-    </body>
+</body>
 </html>
 """
 
