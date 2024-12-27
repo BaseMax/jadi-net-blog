@@ -25,4 +25,13 @@ for filename in os.listdir(POSTS_DIR):
         except Exception as e:
             print(f"Error renaming '{filename}': {e}")
 
-print("Renaming complete.")
+for filename in os.listdir(POSTS_DIR):
+    if pattern.match(filename):
+        file_path = os.path.join(POSTS_DIR, filename)
+        try:
+            os.remove(file_path)
+            print(f"Deleted old format file: '{filename}'")
+        except Exception as e:
+            print(f"Error deleting '{filename}': {e}")
+
+print("Renaming and cleanup complete.")
