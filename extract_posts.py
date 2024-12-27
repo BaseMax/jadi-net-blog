@@ -37,7 +37,7 @@ for entry in feed.entries:
 </html>
     """
     
-    filename = f"{POSTS_DIR}/post_{datetime.now().strftime('%Y%m%d%H%M%S')}_{title.replace(' ', '_')}.html"
+    filename = f"{POSTS_DIR}/post_{title.replace(' ', '_')}.html"
     with open(filename, 'w', encoding='utf-8') as f:
         f.write(html_content)
 
